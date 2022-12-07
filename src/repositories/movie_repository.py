@@ -3,7 +3,7 @@ from src.models import Movie, db
 
 class MovieRepository:
 
-    def get_all_movies(self) -> list[Movie]:
+    def get_all_movies(self):
         all_movies: list[Movie] = Movie.query.all()
         return all_movies
 
@@ -17,7 +17,7 @@ class MovieRepository:
         db.session.commit()
         return new_movie
 
-    def search_movies(self, title) -> list[Movie]:
+    def search_movies(self, title):
         found_movies: list[Movie] = Movie.query.filter(Movie.title.ilike(f'%{title}%')).all()
         return found_movies
 
